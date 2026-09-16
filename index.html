@@ -70,7 +70,7 @@ let currentLead = null;
 async function sendLeadEvent(eventType, extra={}){
   if(!currentLead) return false;
   if(!LEAD_ENDPOINT.startsWith('https://script.google.com/')) return false;
-  const payload={...currentLead,eventType,...extra,pageUrl:location.href,userAgent:navigator.userAgent};
+  const payload={...currentLead,action: eventType,...extra,pageUrl:location.href,userAgent:navigator.userAgent};
   try{
     await fetch(LEAD_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
     return true;
@@ -123,7 +123,7 @@ function showResults(){
   if(!consent.checked){formerr.textContent='Please confirm the assessment disclaimer.';return}
   formerr.textContent='';
   let s=calc();let ranked=Object.entries(s).sort((a,b)=>b[1]-a[1]);let top=ranked.slice(0,3);let strengths=ranked.filter(x=>x[1]<=1).slice(0,3);let max=ranked.reduce((a,x)=>a+x[1],0);let score=Math.max(35,Math.min(95,Math.round(92-max*1.45)));let first=n.split(' ')[0];
-  currentLead={name:n,profession:p,education:e,email:em,mobile:m,marketingOptIn:marketing.checked,score,priority1:cats[top[0][0]],priority2:cats[top[1][0]],priority3:cats[top[2][0]],strengths:strengths.map(x=>cats[x[0]]).join(' • '),answers:qs.map((q,idx)=>({question:q.q,answer:q.a[ans[idx]][0]}))};
+  currentLead={fullName:n,profession:p,education:e,email:em,contactNumber:m,marketingOptIn:marketing.checked,score,priority1:cats[top[0][0]],priority2:cats[top[1][0]],priority3:cats[top[2][0]],strengths:strengths.map(x=>cats[x[0]]).join(' • '),answers:qs.map((q,idx)=>({question:q.q,answer:q.a[ans[idx]][0]}))};
   sendLeadEvent('assessment_completed');
   results.innerHTML=`<div class="result-head"><div class="eyebrow">${first}'s Financial Snapshot</div><h2 style="font-size:38px">Your Financial Clarity Score</h2><div class="score">${score}<span style="font-size:24px;color:#999">/100</span></div><span class="pill">A starting point, not a grade</span></div><div class="priorities">${top.map((x,j)=>`<div class="priority"><small>PRIORITY ${j+1}</small><h3>${cats[x[0]]}</h3><p>${desc[x[0]]}</p></div>`).join('')}</div>${strengths.length?`<div class="strength"><strong>Areas that currently look stronger:</strong><br>${strengths.map(x=>cats[x[0]]).join(' • ')}</div>`:''}<div class="cta"><h3>Know what to work on. Then build the right plan.</h3><p>Your snapshot gives you a starting point. A personal conversation can help translate these priorities into realistic numbers, timelines, and next steps based on your situation.</p><div class="cta-actions"><button class="btn" onclick="openCalendly()">Schedule an appointment</button><button class="btn alt" onclick="requestDiscoveryCall()">Request a discovery call</button></div><div id="callnote" class="callnote hidden"></div></div><p class="disclaimer">This assessment is for general financial education only. Results are based solely on the answers provided and are not a recommendation to purchase any financial product. Consider your complete financial circumstances and seek appropriate professional advice before making financial decisions.</p>`;
   lead.classList.add('hidden');results.classList.remove('hidden');window.scrollTo(0,0)

@@ -1,13 +1,14 @@
-# Kumusta Pera Mo? — Premium V2
+# Kumusta Pera Mo? — Premium V2 (Lead Mapping Fix)
 
-Deploy these files to the same GitHub repository connected to Vercel.
+Upload/replace these files in the SAME GitHub repository connected to Vercel.
 
-## What's new
-- Premium credibility section featuring Jenna Ruth Caceres-Guevara, CPA
-- Professional portrait integrated into the landing experience
-- CPA / 7 Years / 400+ credibility strip
-- Foundation / Protection / Future value proposition
-- More polished middle-class/professional positioning
-- Existing Google Sheets lead endpoint, discovery-call workflow, and Calendly flow retained
+Fixed website → Apps Script field mapping:
+- name → fullName
+- mobile → contactNumber
+- eventType → action
 
-After committing to GitHub, Vercel should automatically redeploy.
+The Google Apps Script endpoint remains unchanged.
+
+After GitHub commit and Vercel redeploy, submit a NEW test response.
+The new Google Sheets row should populate Full Name and Contact Number.
+Discovery Call requests should also use the `action` field expected by Apps Script.
