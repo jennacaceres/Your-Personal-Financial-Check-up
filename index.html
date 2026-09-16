@@ -32,6 +32,26 @@
  .credibility-strip,.what-you-get{grid-template-columns:1fr}
 }
 
+
+/* Client testimonials */
+.testimonials{margin-top:34px;padding:28px 0 8px}
+.testimonials-head{text-align:center;max-width:650px;margin:0 auto 20px}
+.testimonials-head h3{font-family:Georgia,serif;color:var(--wine,#68132b);font-size:30px;margin:5px 0 8px}
+.testimonials-head p{color:#6b6562;line-height:1.55;margin:0}
+.testimonial-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:20px}
+.testimonial-card{display:flex;flex-direction:column;justify-content:space-between;min-height:190px;padding:20px;border:1px solid var(--line,#eadfd8);border-radius:18px;background:#fff;box-shadow:0 8px 24px rgba(67,32,39,.045)}
+.testimonial-mark{font-family:Georgia,serif;font-size:38px;line-height:.7;color:#b48845;margin-bottom:12px}
+.testimonial-card blockquote{margin:0;color:#403b39;font-size:14px;line-height:1.62}
+.testimonial-person{margin-top:18px;padding-top:14px;border-top:1px solid #eee6e1}
+.testimonial-person strong{display:block;color:var(--wine,#68132b);font-size:14px}
+.testimonial-person span{font-size:12px;color:#817976}
+.testimonial-source{text-align:center;margin-top:16px;font-size:12px;color:#817976}
+.testimonial-source a{color:var(--wine,#68132b);font-weight:700;text-decoration:none}
+@media(max-width:700px){
+ .testimonial-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}
+ .testimonial-card{min-width:84%;scroll-snap-align:start}
+}
+
 </style></head>
 <body><main class="wrap"><section class="card"><div class="top"></div><div class="content">
 <div class="brand"><div class="mark">KUMUSTA PERA MO?</div><div class="by">by Jenna Ruth Caceres-Guevara, CPA</div></div>
@@ -57,6 +77,51 @@
     <p>I created Kumusta Pera Mo? to help Filipino professionals and families see what they are already doing well financially, identify what deserves more attention, and make their next financial decision with greater clarity.</p>
   </div>
 </div>
+<section class="testimonials" aria-label="Client testimonials">
+  <div class="testimonials-head">
+    <div class="premium-kicker">Client Experiences</div>
+    <h3>What My Clients Say</h3>
+    <p>Financial planning should feel clear, personal, and centered on what matters to you.</p>
+  </div>
+
+  <div class="testimonial-grid">
+    <article class="testimonial-card">
+      <div><div class="testimonial-mark">“</div><blockquote>She ensures to put her client's needs first. She knows very well what she is saying and continuously learns and trains to better serve her clients.</blockquote></div>
+      <div class="testimonial-person"><strong>Bam Encinas-Brimon</strong><span>Facebook Recommendation</span></div>
+    </article>
+
+    <article class="testimonial-card">
+      <div><div class="testimonial-mark">“</div><blockquote>She's hands on, accommodating, and adaptive. One thing I admire about her is her hunger for growth and passion to share her knowledge about financial planning.</blockquote></div>
+      <div class="testimonial-person"><strong>Belle Pascual</strong><span>Facebook Recommendation</span></div>
+    </article>
+
+    <article class="testimonial-card">
+      <div><div class="testimonial-mark">“</div><blockquote>She provides excellent service by understanding her client's goals and needs to make suitable recommendations and improve the quality of her client's financial decisions.</blockquote></div>
+      <div class="testimonial-person"><strong>Jermaine Villas</strong><span>Facebook Recommendation</span></div>
+    </article>
+
+    <article class="testimonial-card">
+      <div><div class="testimonial-mark">“</div><blockquote>Very professional on providing services and accommodating to her clients. One of the best financial advisors out there, highly recommended for your financial planning needs.</blockquote></div>
+      <div class="testimonial-person"><strong>Ian De Jesus</strong><span>Facebook Recommendation</span></div>
+    </article>
+
+    <article class="testimonial-card">
+      <div><div class="testimonial-mark">“</div><blockquote>She's very patient and accommodating especially to people like me who lack deeper understanding of financial literacy. She always makes sure that concerns are immediately addressed.</blockquote></div>
+      <div class="testimonial-person"><strong>Manoelle Perez</strong><span>Facebook Recommendation</span></div>
+    </article>
+
+    <article class="testimonial-card">
+      <div><div class="testimonial-mark">“</div><blockquote>She’s very responsive to every query I have. She truly cares about her clients.</blockquote></div>
+      <div class="testimonial-person"><strong>Tricia Yu</strong><span>Facebook Recommendation</span></div>
+    </article>
+  </div>
+
+  <div class="testimonial-source">
+    Selected from public client recommendations on
+    <a href="https://www.facebook.com/FinancialPlanningWithJenna" target="_blank" rel="noopener noreferrer">Financial Planning With Jenna on Facebook</a>.
+  </div>
+</section>
+
 <div class="meta"><span>✓ About 3 minutes</span><span>✓ Personalized result</span><span>✓ Free</span></div></section>
 <section id="quiz" class="hidden"><div class="progress"><div id="bar" class="bar"></div></div><div id="qnum" class="qnum"></div><div id="question" class="question"></div><div id="options" class="options"></div><div class="nav"><button class="btn ghost" id="back" onclick="prev()">← Back</button><button class="btn" id="next" onclick="next()">Next →</button></div></section>
 <section id="lead" class="hidden"><div class="ready">✓ Your assessment is complete</div><h2 style="font-size:38px">Where should we send your financial snapshot?</h2><p class="lead">Enter your details to unlock your personalized result, key insights, and recommended next steps.</p><div class="form"><div class="form-grid"><div class="field full"><label>Full name <span class="req">*</span></label><input id="name" class="input" placeholder="Juan Dela Cruz" autocomplete="name"></div><div class="field"><label>Profession <span class="req">*</span></label><input id="profession" class="input" placeholder="e.g. Nurse, Teacher, Engineer"></div><div class="field"><label>Educational attainment <span class="req">*</span></label><select id="education" class="input"><option value="">Select one...</option><option>High School</option><option>Senior High School</option><option>Vocational / Technical</option><option>College Undergraduate</option><option>Bachelor's Degree</option><option>Postgraduate / Master's</option><option>Doctorate / Professional Degree</option><option>Prefer not to say</option></select></div><div class="field"><label>Email address <span class="req">*</span></label><input id="email" class="input" type="email" placeholder="you@email.com" autocomplete="email"></div><div class="field"><label>Contact number <span class="req">*</span></label><input id="mobile" class="input" type="tel" placeholder="09XX XXX XXXX" autocomplete="tel"></div></div><label class="check"><input id="consent" type="checkbox"> <span>I understand that this is a general financial wellness assessment and not individualized financial, investment, tax, or legal advice.</span></label><label class="check"><input id="marketing" type="checkbox"> <span>Yes, I'd like to receive occasional financial insights, tips, and tools from Jenna. I can opt out anytime.</span></label><div id="formerr" class="error"></div><button class="btn" onclick="showResults()">Reveal my Financial Snapshot →</button><div class="privacy">🔒 Your details are kept private and used to provide your result and, if you opt in, related financial insights.</div></div></section>

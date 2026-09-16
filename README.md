@@ -1,14 +1,16 @@
-# Kumusta Pera Mo? — Premium V2 (Lead Mapping Fix)
+# Kumusta Pera Mo? — Premium V3 with Client Testimonials
 
-Upload/replace these files in the SAME GitHub repository connected to Vercel.
+Upload/replace these files in the same GitHub repository connected to Vercel.
 
-Fixed website → Apps Script field mapping:
-- name → fullName
-- mobile → contactNumber
-- eventType → action
+Added:
+- Premium "What My Clients Say" section
+- Six selected Facebook client recommendations
+- Mobile swipe layout and desktop two-column cards
+- Link back to Financial Planning With Jenna on Facebook
 
-The Google Apps Script endpoint remains unchanged.
-
-After GitHub commit and Vercel redeploy, submit a NEW test response.
-The new Google Sheets row should populate Full Name and Contact Number.
-Discovery Call requests should also use the `action` field expected by Apps Script.
+Retained:
+- Google Sheets lead integration
+- Correct fullName/contactNumber/action mapping
+- Discovery Call workflow
+- Calendly flow
+- Jenna profile/photo and Premium V2 styling
