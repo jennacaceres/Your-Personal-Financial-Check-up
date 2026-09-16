@@ -1,16 +1,7 @@
-# Kumusta Pera Mo? — Premium V3 with Client Testimonials
+# Kumusta Pera Mo? — Premium V3
 
-Upload/replace these files in the same GitHub repository connected to Vercel.
+This version removes the old Financial Planning With Jenna Facebook page link entirely.
 
-Added:
-- Premium "What My Clients Say" section
-- Six selected Facebook client recommendations
-- Mobile swipe layout and desktop two-column cards
-- Link back to Financial Planning With Jenna on Facebook
+The client testimonials remain in the app, but there is no clickable link or call-to-action directing prospects to the old Facebook page.
 
-Retained:
-- Google Sheets lead integration
-- Correct fullName/contactNumber/action mapping
-- Discovery Call workflow
-- Calendly flow
-- Jenna profile/photo and Premium V2 styling
+All existing lead capture, Google Sheets integration, Discovery Call workflow, Calendly flow, profile section, and testimonial design are retained.
