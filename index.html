@@ -10,10 +10,54 @@
 :root{--wine:#741b35;--wine2:#4d1023;--gold:#b38a55;--ink:#1f2024;--muted:#6f7178;--cream:#fbf8f5;--line:#e9e1dc;--white:#fff;--green:#356b54}
 *{box-sizing:border-box}body{margin:0;font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink)}
 .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}.card{width:min(760px,100%);background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 18px 60px rgba(65,34,42,.08);overflow:hidden}.top{height:7px;background:linear-gradient(90deg,var(--wine2),var(--wine),var(--gold))}.content{padding:42px}.brand{display:flex;justify-content:space-between;align-items:center;margin-bottom:38px}.mark{font-weight:700;color:var(--wine);letter-spacing:.04em}.by{font-size:13px;color:var(--muted)}h1,h2{font-family:'Playfair Display',serif;margin:0;color:var(--wine2)}h1{font-size:clamp(40px,8vw,68px);line-height:.98}.eyebrow{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}.lead{font-size:18px;line-height:1.6;color:#505159;max-width:590px;margin:22px 0 30px}.btn{border:0;background:var(--wine);color:white;padding:15px 22px;border-radius:12px;font-weight:700;font-size:15px;cursor:pointer}.btn:hover{background:var(--wine2)}.ghost{background:#f4eeee;color:var(--wine)}.progress{height:6px;background:#f0e9e5;border-radius:99px;margin-bottom:34px;overflow:hidden}.bar{height:100%;background:var(--wine);transition:.3s}.qnum{font-size:12px;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.1em}.question{font-family:'Playfair Display',serif;font-size:30px;line-height:1.25;margin:9px 0 25px}.options{display:grid;gap:11px}.option{padding:16px 18px;border:1px solid var(--line);border-radius:13px;background:#fff;text-align:left;font:inherit;cursor:pointer;color:var(--ink)}.option:hover{border-color:#cbaeba;background:#fdf9fa}.option.selected{border-color:var(--wine);background:#f8eef1}.nav{display:flex;justify-content:space-between;margin-top:28px}.hidden{display:none!important}.result-head{text-align:center;padding-bottom:28px;border-bottom:1px solid var(--line)}.score{font-family:'Playfair Display',serif;font-size:58px;color:var(--wine);font-weight:700;margin:8px 0}.pill{display:inline-block;padding:7px 11px;border-radius:99px;background:#f5edef;color:var(--wine);font-size:13px;font-weight:700}.priorities{display:grid;gap:14px;margin:28px 0}.priority{border:1px solid var(--line);border-radius:15px;padding:18px}.priority small{color:var(--gold);font-weight:700}.priority h3{margin:5px 0 7px;color:var(--wine2)}.priority p{margin:0;color:#606169;line-height:1.5;font-size:14px}.strength{background:#f2f7f4;border-radius:15px;padding:18px;margin:18px 0;color:var(--green)}.cta{background:var(--wine2);color:white;border-radius:18px;padding:24px;margin-top:28px}.cta h3{font-family:'Playfair Display',serif;font-size:26px;margin:0 0 8px}.cta p{opacity:.84;line-height:1.5}.cta .btn{background:white;color:var(--wine2)}.cta-actions{display:flex;gap:10px;flex-wrap:wrap}.cta .btn.alt{background:transparent;color:white;border:1px solid rgba(255,255,255,.55)}.callnote{margin-top:12px;padding:13px 15px;border-radius:12px;background:rgba(255,255,255,.10);font-size:13px;line-height:1.5}.disclaimer{font-size:11px;color:#8a8b91;line-height:1.5;margin-top:25px}.meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.meta span{font-size:12px;padding:8px 10px;border:1px solid var(--line);border-radius:99px;color:#666}.form{display:grid;gap:16px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:grid;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:13px;font-weight:700;color:var(--ink)}.req{color:var(--gold)}.input{width:100%;padding:15px;border:1px solid var(--line);border-radius:12px;font:inherit;background:#fff}.input:focus{outline:2px solid rgba(116,27,53,.12);border-color:var(--wine)}.ready{display:inline-block;padding:8px 12px;border-radius:99px;background:#f5edef;color:var(--wine);font-size:12px;font-weight:700;margin-bottom:16px}.privacy{font-size:12px;text-align:center;color:#7b7c83;margin-top:2px}.check{display:flex;gap:10px;font-size:13px;color:#666;line-height:1.4}.error{font-size:12px;color:#a22}.footer{text-align:center;font-size:12px;color:#929299;padding:0 42px 30px}@media(max-width:600px){.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.content{padding:28px 22px}.brand{margin-bottom:28px}.question{font-size:25px}.wrap{padding:10px}.card{border-radius:18px}.by{display:none}}
+
+/* Premium V2 */
+.credibility-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0}
+.credibility-item{padding:16px 12px;border:1px solid var(--line,#eadfd8);border-radius:16px;background:#fff;text-align:center}
+.credibility-item strong{display:block;font-family:Georgia,serif;font-size:22px;color:var(--wine,#68132b)}
+.credibility-item span{font-size:12px;color:#6f6a68}
+.meet-jenna{display:grid;grid-template-columns:160px 1fr;gap:24px;align-items:center;margin-top:28px;padding:24px;border:1px solid var(--line,#eadfd8);border-radius:22px;background:linear-gradient(135deg,#fff,#fbf7f3)}
+.meet-jenna img{width:160px;height:190px;object-fit:cover;border-radius:18px}
+.meet-jenna h3{margin:0 0 5px;color:var(--wine,#68132b);font-family:Georgia,serif;font-size:27px}
+.meet-jenna .role{font-weight:700;margin-bottom:10px;color:#403b39}
+.meet-jenna p{margin:0;color:#5d5856;line-height:1.6}
+.premium-kicker{text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:800;color:#b48845;margin-bottom:10px}
+.what-you-get{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}
+.what-card{padding:18px;border:1px solid var(--line,#eadfd8);border-radius:16px;background:#fff}
+.what-card strong{display:block;color:var(--wine,#68132b);margin-bottom:6px}
+.what-card span{font-size:13px;line-height:1.45;color:#6c6663}
+@media(max-width:700px){
+ .meet-jenna{grid-template-columns:1fr;text-align:center}
+ .meet-jenna img{width:130px;height:155px;margin:auto}
+ .credibility-strip,.what-you-get{grid-template-columns:1fr}
+}
+
 </style></head>
 <body><main class="wrap"><section class="card"><div class="top"></div><div class="content">
-<div class="brand"><div class="mark">KUMUSTA PERA MO?</div><div class="by">by Jenna Guevara, CPA</div></div>
-<section id="landing"><div class="eyebrow">Your Personal Financial Check-up</div><h1>Kumusta<br>pera mo?</h1><p class="lead">Take this quick financial check-up to see what you're already doing well and which areas may deserve your attention next. No judgment. Just clarity.</p><button class="btn" onclick="startQuiz()">Start my financial check-up →</button><div class="meta"><span>✓ About 3 minutes</span><span>✓ Personalized result</span><span>✓ Free</span></div></section>
+<div class="brand"><div class="mark">KUMUSTA PERA MO?</div><div class="by">by Jenna Ruth Caceres-Guevara, CPA</div></div>
+<section id="landing"><div class="eyebrow">Your Personal Financial Health Check</div><h1>Kumusta<br>pera mo?</h1><p class="lead">Take this quick financial check-up to see what you're already doing well and which areas may deserve your attention next. No judgment. Just clarity.</p><button class="btn" onclick="startQuiz()">Start my financial check-up →</button>
+<div class="what-you-get">
+  <div class="what-card"><strong>Your Foundation</strong><span>See how prepared you are for unexpected financial events.</span></div>
+  <div class="what-card"><strong>Your Protection</strong><span>Review how well your health, income, and family are financially protected.</span></div>
+  <div class="what-card"><strong>Your Future</strong><span>See how intentionally you are building toward goals, wealth, and retirement.</span></div>
+</div>
+
+<div class="credibility-strip">
+  <div class="credibility-item"><strong>CPA</strong><span>Professional financial perspective</span></div>
+  <div class="credibility-item"><strong>7 Years</strong><span>Financial services experience</span></div>
+  <div class="credibility-item"><strong>400+</strong><span>Clients & families served</span></div>
+</div>
+
+<div class="meet-jenna">
+  <img src="jenna-ruth-caceres-guevara.jpg" alt="Jenna Ruth Caceres-Guevara, CPA">
+  <div>
+    <div class="premium-kicker">Meet Jenna</div>
+    <h3>Jenna Ruth Caceres-Guevara, CPA</h3>
+    <div class="role">Financial Advisor & Unit Manager</div>
+    <p>I created Kumusta Pera Mo? to help Filipino professionals and families see what they are already doing well financially, identify what deserves more attention, and make their next financial decision with greater clarity.</p>
+  </div>
+</div>
+<div class="meta"><span>✓ About 3 minutes</span><span>✓ Personalized result</span><span>✓ Free</span></div></section>
 <section id="quiz" class="hidden"><div class="progress"><div id="bar" class="bar"></div></div><div id="qnum" class="qnum"></div><div id="question" class="question"></div><div id="options" class="options"></div><div class="nav"><button class="btn ghost" id="back" onclick="prev()">← Back</button><button class="btn" id="next" onclick="next()">Next →</button></div></section>
 <section id="lead" class="hidden"><div class="ready">✓ Your assessment is complete</div><h2 style="font-size:38px">Where should we send your financial snapshot?</h2><p class="lead">Enter your details to unlock your personalized result, key insights, and recommended next steps.</p><div class="form"><div class="form-grid"><div class="field full"><label>Full name <span class="req">*</span></label><input id="name" class="input" placeholder="Juan Dela Cruz" autocomplete="name"></div><div class="field"><label>Profession <span class="req">*</span></label><input id="profession" class="input" placeholder="e.g. Nurse, Teacher, Engineer"></div><div class="field"><label>Educational attainment <span class="req">*</span></label><select id="education" class="input"><option value="">Select one...</option><option>High School</option><option>Senior High School</option><option>Vocational / Technical</option><option>College Undergraduate</option><option>Bachelor's Degree</option><option>Postgraduate / Master's</option><option>Doctorate / Professional Degree</option><option>Prefer not to say</option></select></div><div class="field"><label>Email address <span class="req">*</span></label><input id="email" class="input" type="email" placeholder="you@email.com" autocomplete="email"></div><div class="field"><label>Contact number <span class="req">*</span></label><input id="mobile" class="input" type="tel" placeholder="09XX XXX XXXX" autocomplete="tel"></div></div><label class="check"><input id="consent" type="checkbox"> <span>I understand that this is a general financial wellness assessment and not individualized financial, investment, tax, or legal advice.</span></label><label class="check"><input id="marketing" type="checkbox"> <span>Yes, I'd like to receive occasional financial insights, tips, and tools from Jenna. I can opt out anytime.</span></label><div id="formerr" class="error"></div><button class="btn" onclick="showResults()">Reveal my Financial Snapshot →</button><div class="privacy">🔒 Your details are kept private and used to provide your result and, if you opt in, related financial insights.</div></div></section>
 <section id="results" class="hidden"></section>
