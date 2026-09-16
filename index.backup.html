@@ -19,37 +19,6 @@
 <section id="results" class="hidden"></section>
 </div><div class="footer">Financial education tool • Your answers stay on this device in this version.</div></section></main>
 <script>
-// After deploying the included Google Apps Script as a Web App, paste its /exec URL here.
-const LEAD_ENDPOINT = 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
-let currentLead = null;
-
-async function sendLeadEvent(eventType, extra={}){
-  if(!currentLead) return false;
-  if(!LEAD_ENDPOINT.startsWith('https://script.google.com/')) return false;
-  const payload={...currentLead,eventType,...extra,pageUrl:location.href,userAgent:navigator.userAgent};
-  try{
-    await fetch(LEAD_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
-    return true;
-  }catch(err){console.error('Lead submission failed',err);return false}
-}
-
-function openCalendly(){
-  sendLeadEvent('appointment_link_clicked');
-  window.open('https://calendly.com/talktojenna/appointments','_blank');
-}
-
-async function requestDiscoveryCall(){
-  const note=document.getElementById('callnote');
-  note.classList.remove('hidden');
-  note.textContent='Submitting your discovery call request…';
-  const ok=await sendLeadEvent('discovery_call_requested');
-  const hour=new Date().getHours();
-  const within=hour>=10 && hour<20;
-  note.innerHTML=ok
-    ? `<strong>Discovery Call Requested ✓</strong><br>${within?'Jenna may call you within approximately one hour.':'Your request was received outside 10:00 AM–8:00 PM. Jenna will call you first thing in the morning.'}`
-    : `<strong>Almost done.</strong><br>Please contact Jenna directly because the notification connection has not been activated yet.`;
-}
-
 const cats={cash:'Cash Flow & Budgeting',debt:'Debt Management',emergency:'Emergency Fund',health:'Health Protection',family:'Income & Family Protection',goals:'Goal-Based Savings',wealth:'Wealth Building',retirement:'Retirement & Legacy'};
 const desc={cash:'Create more visibility and breathing room in your monthly cash flow.',debt:'Reduce debt pressure so more of your income can work toward your future.',emergency:'Build accessible savings for unexpected expenses or loss of income.',health:'Strengthen your plan for hospitalization, major illness, and health-related costs.',family:'Review how financially protected your dependents would be if your income suddenly stopped.',goals:'Turn important life goals into specific amounts, timelines, and saving habits.',wealth:'Build a consistent long-term investing strategy aligned with your goals and risk tolerance.',retirement:'Create a clearer plan for future income, retirement, and the legacy you want to leave.'};
 const qs=[
@@ -71,18 +40,5 @@ function startQuiz(){landing.classList.add('hidden');quiz.classList.remove('hidd
 function render(){qnum.textContent=`Question ${i+1} of ${qs.length}`;question.textContent=qs[i].q;bar.style.width=`${((i+1)/qs.length)*100}%`;options.innerHTML='';qs[i].a.forEach((x,j)=>{let b=document.createElement('button');b.className='option'+(ans[i]===j?' selected':'');b.textContent=x[0];b.onclick=()=>{ans[i]=j;render()};options.appendChild(b)});back.style.visibility=i?'visible':'hidden';next.textContent=i===qs.length-1?'Finish assessment →':'Next →'}
 function next(){if(ans[i]===null){alert('Please choose an answer first.');return}if(i<qs.length-1){i++;render()}else{quiz.classList.add('hidden');lead.classList.remove('hidden')}}function prev(){if(i){i--;render()}}
 function calc(){let s={};Object.keys(cats).forEach(k=>s[k]=0);ans.forEach((v,idx)=>{let w=qs[idx].a[v][1];Object.entries(w).forEach(([k,n])=>s[k]+=n)});return s}
-function showResults(){
-  let n=document.getElementById('name').value.trim(),p=document.getElementById('profession').value.trim(),e=document.getElementById('education').value,em=document.getElementById('email').value.trim(),m=document.getElementById('mobile').value.trim();
-  let emailOK=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em);
-  if(!n||!p||!e||!em||!m){formerr.textContent='Please complete all required fields before revealing your result.';return}
-  if(!emailOK){formerr.textContent='Please enter a valid email address.';return}
-  if(!consent.checked){formerr.textContent='Please confirm the assessment disclaimer.';return}
-  formerr.textContent='';
-  let s=calc();let ranked=Object.entries(s).sort((a,b)=>b[1]-a[1]);let top=ranked.slice(0,3);let strengths=ranked.filter(x=>x[1]<=1).slice(0,3);let max=ranked.reduce((a,x)=>a+x[1],0);let score=Math.max(35,Math.min(95,Math.round(92-max*1.45)));let first=n.split(' ')[0];
-  currentLead={name:n,profession:p,education:e,email:em,mobile:m,marketingOptIn:marketing.checked,score,priority1:cats[top[0][0]],priority2:cats[top[1][0]],priority3:cats[top[2][0]],strengths:strengths.map(x=>cats[x[0]]).join(' • '),answers:qs.map((q,idx)=>({question:q.q,answer:q.a[ans[idx]][0]}))};
-  sendLeadEvent('assessment_completed');
-  results.innerHTML=`<div class="result-head"><div class="eyebrow">${first}'s Financial Snapshot</div><h2 style="font-size:38px">Your Financial Clarity Score</h2><div class="score">${score}<span style="font-size:24px;color:#999">/100</span></div><span class="pill">A starting point, not a grade</span></div><div class="priorities">${top.map((x,j)=>`<div class="priority"><small>PRIORITY ${j+1}</small><h3>${cats[x[0]]}</h3><p>${desc[x[0]]}</p></div>`).join('')}</div>${strengths.length?`<div class="strength"><strong>Areas that currently look stronger:</strong><br>${strengths.map(x=>cats[x[0]]).join(' • ')}</div>`:''}<div class="cta"><h3>Know what to work on. Then build the right plan.</h3><p>Your snapshot gives you a starting point. A personal conversation can help translate these priorities into realistic numbers, timelines, and next steps based on your situation.</p><div class="cta-actions"><button class="btn" onclick="openCalendly()">Schedule an appointment</button><button class="btn alt" onclick="requestDiscoveryCall()">Request a discovery call</button></div><div id="callnote" class="callnote hidden"></div></div><p class="disclaimer">This assessment is for general financial education only. Results are based solely on the answers provided and are not a recommendation to purchase any financial product. Consider your complete financial circumstances and seek appropriate professional advice before making financial decisions.</p>`;
-  lead.classList.add('hidden');results.classList.remove('hidden');window.scrollTo(0,0)
-}
-
+function showResults(){let n=document.getElementById('name').value.trim(),p=document.getElementById('profession').value.trim(),e=document.getElementById('education').value,em=document.getElementById('email').value.trim(),m=document.getElementById('mobile').value.trim();let emailOK=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em);if(!n||!p||!e||!em||!m){formerr.textContent='Please complete all required fields before revealing your result.';return}if(!emailOK){formerr.textContent='Please enter a valid email address.';return}if(!consent.checked){formerr.textContent='Please confirm the assessment disclaimer.';return}formerr.textContent='';let s=calc();let ranked=Object.entries(s).sort((a,b)=>b[1]-a[1]);let top=ranked.slice(0,3);let strengths=ranked.filter(x=>x[1]<=1).slice(0,3);let max=ranked.reduce((a,x)=>a+x[1],0);let score=Math.max(35,Math.min(95,Math.round(92-max*1.45)));let first=n.split(' ')[0];results.innerHTML=`<div class="result-head"><div class="eyebrow">${first}'s Financial Snapshot</div><h2 style="font-size:38px">Your Financial Clarity Score</h2><div class="score">${score}<span style="font-size:24px;color:#999">/100</span></div><span class="pill">A starting point, not a grade</span></div><div class="priorities">${top.map((x,j)=>`<div class="priority"><small>PRIORITY ${j+1}</small><h3>${cats[x[0]]}</h3><p>${desc[x[0]]}</p></div>`).join('')}</div>${strengths.length?`<div class="strength"><strong>Areas that currently look stronger:</strong><br>${strengths.map(x=>cats[x[0]]).join(' • ')}</div>`:''}<div class="cta"><h3>Know what to work on. Then build the right plan.</h3><p>Your snapshot gives you a starting point. A personal conversation can help translate these priorities into realistic numbers, timelines, and next steps based on your situation.</p><div class="cta-actions"><button class="btn" onclick="window.open('https://calendly.com/talktojenna/appointments','_blank')">Schedule an appointment</button><button class="btn alt" onclick="requestDiscoveryCall()">Request a discovery call</button></div><div id="callnote" class="callnote hidden"></div></div><p class="disclaimer">This assessment is for general financial education only. Results are based solely on the answers provided and are not a recommendation to purchase any financial product. Consider your complete financial circumstances and seek appropriate professional advice before making financial decisions.</p>`;lead.classList.add('hidden');results.classList.remove('hidden');window.scrollTo(0,0)}
 </script></body></html>
